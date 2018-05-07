@@ -464,7 +464,7 @@ class RandomForestGraphs(object):
             sparse_features=processed_sparse_features,
             **tree_kwargs))
 
-    return control_flow_ops.group(*tree_graphs, name='train')
+    return control_flow_ops.group(*tree_graphs, name='train'), gather_indices
 
   def inference_graph(self, input_data, **inference_args):
     """Constructs a TF graph for evaluating a random forest.
